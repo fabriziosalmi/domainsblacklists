@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domains Blacklist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand title" href="#home">DOMAINSBLACKLISTS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#downloads">Downloads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contribute">Contribute</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#credits">Credits</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section" id="home">
+        <div class="container text-center col">
+            <h1 class="text-center mb-4">DOMAINSBLACKLISTS</h1>
+            <p class="lead">Building a service on top of a regularly updated blacklists can provide immense value, not only for individual internet users but also for businesses and cybersecurity professionals. Whatever service you choose to build, ensure it's user-friendly, reliable, and secure.</p>
+        </div>
+    </header>
+
+    <!-- Downloads Section -->
+    <section id="downloads" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Downloads</h2>
+
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Squid</button></a>
+                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/unbound_blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Unbound</button></a>
+                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/rpz_blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Bind, PowerDNS</button></a>
+                    <a href="https://get.domainsblacklists.com/blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Pi-Hole, AdGuard, uBlock Origin</button></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Features</h2>
+            <ul style="list-style-type: none;">
+                <li><b>✔️ Hourly Updates</b>: stay protected against emerging threats</li>
+                <li><b>✔️ Comprehensive Coverage</b>: aggregated from the <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls" target="_blank">most frequently updated blacklists</a></li>
+                <li><b>✔️ Broad Compatibility</b>: works across browsers, firewalls, proxies, and more</li>
+                <li><b>✔️ Robust Security</b>: protect against phishing, spam, scams, ads, trackers, bad websites and more</li>
+                <li><b>✔️ Whitelist Capability</b>: <a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose" target="_blank">submit domain for whitelisting</a></li>
+                <li><b>✔️ Local Mirror</b>: set up easily using the <a href="https://hub.docker.com/repository/docker/fabriziosalmi/blacklists/" target="_blank">Docker image</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Contribute</h2>
+            <p>Propose additions or removals to the blacklist, enhance blacklist or whitelist processing, or dive into statistics and data analytics. <a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose">Get involved</a>.</p>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <section id="credits" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Credits</h2>
+            <p>This project owes its existence to numerous dedicated blacklists creators. For a full list, check the <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls">complete blacklists URLs</a>.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3" style="margin-top: 20px;">
+        <p>&copy; 2024 DomainsBlacklist. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

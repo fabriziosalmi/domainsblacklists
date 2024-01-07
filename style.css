@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,700;1,700&display=swap');
+
+body {
+    font-family: 'Figtree', Helvetica, 'Arial', sans-serif;
+    font-size: x-large;
+    padding-top: 70px; /* Offset for fixed navbar */
+    background: #f0f0f0;
+    color: #333;
+}
+
+.navbar {
+    background-color: #1c1c1c;
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+
+.hero-section {
+    background: linear-gradient(to bottom, #2c5771, #000);
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; /* Large font size for larger screens */
+    /* background: black; */
+    border-radius: 35px;
+    padding: 20px;
+    font-weight: bold;
+    margin: auto; /* Center the title */
+    width: fit-content;
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    white-space: normal; /* Allow text to wrap */
+    margin-top: 20px;
+    /* box-shadow: inset 0 0 17px 0px #4c5257; */
+    -webkit-text-stroke: 3px black;
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 1.8rem; /* Smaller font size for mobile screens */
+        padding: 20px;
+        width: fit-content;
+    }
+
+    .hero-section p {
+        font-size: 1rem; /* Adjust paragraph size for mobile */
+    }
+
+    /* Additional adjustments for other elements as needed */
+}
+
+/* Section Titles */
+section h2 {
+    font-size: 2.5rem; /* Default size for larger screens */
+    margin-top: 0;
+    padding-top: 20px; /* Add padding to avoid overlap with navbar */
+}
+
+@media (max-width: 768px) {
+    section h2 {
+        font-size: 1.8rem; /* Smaller font size for mobile screens */
+    }
+}
+
+
+.hero-section p {
+    font-size: 1.7rem;
+}
+
+/* Section Style with Offset for Fixed Navbar */
+section {
+    padding: 60px 0 40px; /* Increased top padding */
+    position: relative;
+}
+
+section::before {
+    content: '';
+    display: block;
+    height: 70px; /* Same as navbar height */
+    margin-top: -70px; /* Same as navbar height but negative */
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.bg-light {
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Download Section Styles */
+#downloads {
+    background: #000;
+    color: white;
+}
+
+/* Other styles remain the same */
+
+/* Footer Style */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.title {
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.col {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: #eee !important;
+}
+
+.bg-dark {
+    background-color: #1f262d !important;
+}
