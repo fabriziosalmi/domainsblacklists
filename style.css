@@ -34,6 +34,7 @@ body {
     white-space: normal; /* Allow text to wrap */
     margin-top: 20px;
     /* box-shadow: inset 0 0 17px 0px #4c5257; */
+    background: black;
 }
 
 /* Responsive Styles for Smaller Screens */
