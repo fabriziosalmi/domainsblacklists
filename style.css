@@ -34,8 +34,6 @@ body {
     white-space: normal; /* Allow text to wrap */
     margin-top: 20px;
     /* box-shadow: inset 0 0 17px 0px #4c5257; */
-    background: black;
-    height: 100px;
 }
 
 /* Responsive Styles for Smaller Screens */
@@ -140,3 +138,25 @@ h2 {
 .bg-dark {
     background-color: #1f262d !important;
 }
+
+@media (min-width: 600px) {
+    .hero-section h1 {
+        font-size: 3.5rem; /* Large font size for larger screens */
+        /* background: black; */
+        border-radius: 35px;
+        padding: 20px;
+        font-weight: bold;
+        margin: auto; /* Center the title */
+        width: fit-content;
+        max-width: 100%; /* Ensure it doesn't exceed screen width */
+        box-sizing: border-box; /* Include padding in width calculation */
+        white-space: normal; /* Allow text to wrap */
+        margin-top: 20px;
+        /* box-shadow: inset 0 0 17px 0px #4c5257; */
+        background: black;
+        height: 100px;
+    }
+}
+
+
+
