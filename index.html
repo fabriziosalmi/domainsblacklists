@@ -3,101 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domains Blacklist</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>DomainsBlacklists - Comprehensive Domain Filtering</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/fabriziosalmi/blacklists/main/favicon.png">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body class="light-mode">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand title" href="#home">DOMAINSBLACKLISTS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand title" href="#home">
+                <i class="fas fa-shield-alt me-2"></i>DOMAINSBLACKLISTS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#downloads">Downloads</a>
+                        <a class="nav-link" href="#downloads"><i class="fas fa-download me-1"></i> Downloads</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
+                        <a class="nav-link" href="#features"><i class="fas fa-star me-1"></i> Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contribute">Contribute</a>
+                        <a class="nav-link" href="#contribute"><i class="fas fa-code-branch me-1"></i> Contribute</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#credits">Credits</a>
+                        <a class="nav-link" href="#credits"><i class="fas fa-award me-1"></i> Credits</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="btn nav-link">
+                            <i class="fas fa-moon"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="hero-section" id="home">
-        <div class="container text-center col">
-            <h1 class="text-center mb-4">DOMAINSBLACKLISTS</h1>
-            <p class="lead">Building a service on top of a regularly updated blacklists can provide immense value, not only for individual internet users but also for businesses and cybersecurity professionals. Whatever service you choose to build, ensure it's user-friendly, reliable, and secure.</p>
+        <div class="container text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-center mb-4">DOMAINSBLACKLISTS</h1>
+                <p class="lead">Protect your digital environment with our comprehensive, regularly updated domain blacklists.</p>
+                <div class="mt-5">
+                    <a href="#downloads" class="btn btn-primary btn-lg action-button">
+                        <i class="fas fa-download me-2"></i>Get Started
+                    </a>
+                    <a href="https://github.com/fabriziosalmi/blacklists" target="_blank" class="btn btn-outline-light btn-lg ms-3">
+                        <i class="fab fa-github me-2"></i>View on GitHub
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Downloads Section -->
     <section id="downloads" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Downloads</h2>
-
-            <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Squid</button></a>
-                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/unbound_blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Unbound</button></a>
-                    <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/rpz_blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Bind, PowerDNS</button></a>
-                    <a href="https://get.domainsblacklists.com/blacklist.txt"><button type="button" class="btn btn-primary btn-lg  mr-1">Pi-Hole, AdGuard, uBlock Origin</button></a>
+            <h2 class="text-center mb-5" data-aos="fade-up">Downloads</h2>
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Squid</h3>
+                        <p>Perfect for proxy filtering</p>
+                        <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/blacklist.txt" class="btn btn-primary download-btn">
+                            <i class="fas fa-download me-2"></i>Download
+                        </a>
                     </div>
-
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Unbound</h3>
+                        <p>Ideal for DNS resolvers</p>
+                        <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/unbound_blacklist.txt" class="btn btn-primary download-btn">
+                            <i class="fas fa-download me-2"></i>Download
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Bind, PowerDNS</h3>
+                        <p>DNS server integration</p>
+                        <a href="https://github.com/fabriziosalmi/blacklists/releases/download/latest/rpz_blacklist.txt" class="btn btn-primary download-btn">
+                            <i class="fas fa-download me-2"></i>Download
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <h3>Ad Blockers</h3>
+                        <p>Pi-Hole, AdGuard, uBlock</p>
+                        <a href="https://get.domainsblacklists.com/blacklist.txt" class="btn btn-primary download-btn">
+                            <i class="fas fa-download me-2"></i>Download
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5 bg-light">
+    <section id="features" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Features</h2>
-            <ul style="list-style-type: none;">
-                <li><b>✔️ Hourly Updates</b>: stay protected against emerging threats</li>
-                <li><b>✔️ Comprehensive Coverage</b>: aggregated from the <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls" target="_blank">most frequently updated blacklists</a></li>
-                <li><b>✔️ Broad Compatibility</b>: works across browsers, firewalls, proxies, and more</li>
-                <li><b>✔️ Robust Security</b>: protect against phishing, spam, scams, ads, trackers, bad websites and more</li>
-                <li><b>✔️ Whitelist Capability</b>: <a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose" target="_blank">submit domain for whitelisting</a></li>
-                <li><b>✔️ Local Mirror</b>: set up easily using the <a href="https://hub.docker.com/repository/docker/fabriziosalmi/blacklists/" target="_blank">Docker image</a></li>
-            </ul>
+            <h2 class="text-center mb-5" data-aos="fade-up">Features</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cybersecurity" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <div>
+                                <h3>Hourly Updates</h3>
+                                <p>Stay protected against emerging threats with frequent updates</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>Comprehensive Coverage</h3>
+                                <p>Aggregated from the <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls" target="_blank">most frequently updated blacklists</a></p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <div>
+                                <h3>Broad Compatibility</h3>
+                                <p>Works across browsers, firewalls, proxies, and more</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h3>Robust Security</h3>
+                                <p>Protect against phishing, spam, scams, ads, trackers, and malicious websites</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-list-alt"></i>
+                            <div>
+                                <h3>Whitelist Capability</h3>
+                                <p><a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose" target="_blank">Submit domains for whitelisting</a></p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-server"></i>
+                            <div>
+                                <h3>Local Mirror</h3>
+                                <p>Set up easily using the <a href="https://hub.docker.com/repository/docker/fabriziosalmi/blacklists/" target="_blank">Docker image</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contribute Section -->
-    <section id="contribute" class="py-5 bg-light">
+    <section id="contribute" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Contribute</h2>
-            <p>Propose additions or removals to the blacklist, enhance blacklist or whitelist processing, or dive into statistics and data analytics. <a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose">Get involved</a>.</p>
+            <h2 class="text-center mb-5" data-aos="fade-up">Contribute</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="contribute-card">
+                        <i class="fas fa-code-branch contribute-icon"></i>
+                        <h3>Join Our Community</h3>
+                        <p>Propose additions or removals to the blacklist, enhance blacklist or whitelist processing, or dive into statistics and data analytics.</p>
+                        <a href="https://github.com/fabriziosalmi/blacklists/issues/new/choose" class="btn btn-primary btn-lg mt-3">
+                            <i class="fab fa-github me-2"></i>Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Credits Section -->
     <section id="credits" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Credits</h2>
-            <p>This project owes its existence to numerous dedicated blacklists creators. For a full list, check the <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls">complete blacklists URLs</a>.</p>
+            <h2 class="text-center mb-5" data-aos="fade-up">Credits</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="credits-card">
+                        <i class="fas fa-award credits-icon"></i>
+                        <p class="lead">This project owes its existence to numerous dedicated blacklists creators.</p>
+                        <a href="https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls" class="btn btn-outline-primary mt-3">
+                            View All Contributors
+                        </a>
+                        <div class="mt-4 credits-logos">
+                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-ban"></i>
+                            <i class="fas fa-user-shield"></i>
+                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3" style="margin-top: 20px;">
-        <p>&copy; 2024 DomainsBlacklist. All Rights Reserved.</p>
+    <footer class="py-4 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start">
+                    <p>&copy; 2025 DomainsBlacklists. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/fabriziosalmi/blacklists" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS library for animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>

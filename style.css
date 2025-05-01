@@ -1,161 +1,716 @@
+/* Modern CSS with light/dark mode support and animations */
+
+:root {
+    --primary-color: #4e73df;
+    --primary-color-hover: #375bd2;
+    --secondary-color: #1cc88a;
+    --dark-bg: #1a202c; /* Dark background */
+    --light-bg: #f8f9fc; /* Light background */
+    --dark-text: #2d3748; /* Dark text */
+    --light-text: #f7fafc; /* Light text */
+    --card-bg-light: #ffffff; /* Card background in light mode */
+    --card-bg-dark: #2d3748; /* Card background in dark mode */
+    --section-light: #f0f2f5; /* Section background in light mode */
+    --section-dark: #252d3a; /* Section background in dark mode */
+    --border-light: #e3e6f0; /* Border color in light mode */
+    --border-dark: #4a5568; /* Border color in dark mode */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
+    --transition-speed: 0.3s ease; /* Smoother transition */
+}
+
+/* Base Styles */
 body {
-    font-family: Helvetica, 'Arial', sans-serif;
-    font-size: x-large;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem; /* Use rem for scalability */
+    line-height: 1.6;
     padding-top: 70px; /* Offset for fixed navbar */
-    background: #f0f0f0;
-    color: #333;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    scroll-behavior: smooth;
 }
 
+/* Light/Dark Mode */
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    --card-bg: var(--card-bg-light);
+    --section-bg: var(--section-light);
+    --border-color: var(--border-light);
+    --shadow-color: var(--shadow-light);
+    --text-color: var(--dark-text);
+    --muted-text-color: #718096;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    --card-bg: var(--card-bg-dark);
+    --section-bg: var(--section-dark);
+    --border-color: var(--border-dark);
+    --shadow-color: var(--shadow-dark);
+    --text-color: var(--light-text);
+    --muted-text-color: #a0aec0;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Subtle track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-hover);
+}
+
+/* Navbar Styling */
 .navbar {
-    background-color: #1c1c1c;
+    padding: 1rem 0; /* Use rem */
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    background-color: rgba(var(--light-bg-rgb, 248, 249, 252), 0.95); /* Default light */
+    border-bottom: 1px solid var(--border-color);
 }
 
-.navbar-brand, .nav-link {
-    color: #fff !important;
+.light-mode .navbar {
+    background-color: rgba(248, 249, 252, 0.95); /* Light bg with opacity */
 }
 
+.dark-mode .navbar {
+    background-color: rgba(26, 32, 44, 0.95); /* Dark bg with opacity */
+}
+
+.navbar.scrolled {
+    padding: 0.75rem 0; /* Slightly smaller padding on scroll */
+    box-shadow: 0 4px 15px var(--shadow-color); /* Enhanced shadow on scroll */
+}
+
+.navbar-brand {
+    font-weight: 700; /* Bolder */
+    font-size: 1.5rem;
+    color: var(--text-color) !important;
+    transition: color var(--transition-speed);
+}
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    margin: 0 0.75rem; /* Use rem */
+    position: relative;
+    transition: color var(--transition-speed);
+    color: var(--text-color) !important;
+    font-weight: 500; /* Slightly bolder */
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px; /* Adjusted position */
+    transition: width var(--transition-speed);
+}
+
+.nav-link:hover, .nav-link.active { /* Style active link */
+    color: var(--primary-color) !important;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+    width: 70%; /* Underline effect */
+}
+
+.navbar-toggler {
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem; /* Larger toggler icon */
+}
+.navbar-toggler:focus {
+    box-shadow: none; /* Remove focus ring */
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: transform var(--transition-speed), color var(--transition-speed);
+    cursor: pointer;
+    padding: 0.5rem; /* Add padding for easier clicking */
+}
+
+#theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1); /* Add scale effect */
+    color: var(--primary-color);
+}
+
+/* Hero Section */
 .hero-section {
-    background: linear-gradient(to bottom, #2c5771, #000);
-    color: #fff;
-    padding: 100px 0;
-    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+    color: var(--light-text);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Ensure text is centered */
+}
+
+.dark-mode .hero-section {
+    background: linear-gradient(135deg, #2a4365 0%, var(--dark-bg) 100%);
+}
+
+/* Remove the SVG background overlay for a cleaner look */
+/* .hero-section::after { ... } */
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-section h1 {
-    font-size: 3.5rem; /* Large font size for larger screens */
-    /* background: black; */
-    border-radius: 35px;
-    padding: 20px;
-    font-weight: bold;
-    margin: auto; /* Center the title */
-    width: fit-content;
-    max-width: 100%; /* Ensure it doesn't exceed screen width */
-    box-sizing: border-box; /* Include padding in width calculation */
-    white-space: normal; /* Allow text to wrap */
-    margin-top: 20px;
-    /* box-shadow: inset 0 0 17px 0px #4c5257; */
+    font-size: clamp(2.5rem, 5vw, 3.8rem); /* Responsive font size */
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem; /* Use rem */
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
 }
 
-/* Responsive Styles for Smaller Screens */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 1.8rem; /* Smaller font size for mobile screens */
-        padding: 20px;
-        width: fit-content;
-    }
-
-    .hero-section p {
-        font-size: 1rem; /* Adjust paragraph size for mobile */
-    }
-
-    /* Additional adjustments for other elements as needed */
+.hero-section .lead {
+    font-size: clamp(1.1rem, 3vw, 1.5rem); /* Responsive font size */
+    margin-bottom: 2.5rem; /* Use rem */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9; /* Slightly transparent lead text */
 }
 
-/* Section Titles */
-section h2 {
-    font-size: 2.5rem; /* Default size for larger screens */
-    margin-top: 0;
-    padding-top: 20px; /* Add padding to avoid overlap with navbar */
+/* Hero Stats */
+.hero-stats {
+    margin-top: 3rem; /* Use rem */
 }
 
-@media (max-width: 768px) {
-    section h2 {
-        font-size: 1.8rem; /* Smaller font size for mobile screens */
-    }
+.stat-item {
+    padding: 1.5rem; /* Use rem */
+    transition: transform var(--transition-speed);
 }
 
-
-.hero-section p {
-    font-size: 1.7rem;
+.stat-item:hover {
+    transform: translateY(-8px); /* Slightly more lift */
 }
 
-/* Section Style with Offset for Fixed Navbar */
-section {
-    padding: 60px 0 40px; /* Increased top padding */
-    position: relative;
+.stat-item i {
+    font-size: 3rem; /* Use rem */
+    margin-bottom: 1rem; /* Use rem */
+    color: var(--secondary-color);
+    display: block; /* Ensure icon is block for centering */
 }
 
-section::before {
-    content: '';
-    display: block;
-    height: 70px; /* Same as navbar height */
-    margin-top: -70px; /* Same as navbar height but negative */
-    visibility: hidden;
-    position: absolute;
-    top: 0;
+.feature-highlight {
+    font-size: 1.8rem; /* Use rem */
+    font-weight: 700; /* Bolder */
+    margin: 0.75rem 0; /* Use rem */
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.bg-light {
-    background-color: #f4f4f4;
+.stat-item span { /* Style the label below highlight */
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.container {
-    width: 85%;
-    margin: auto;
-    overflow: hidden;
+/* Action Buttons */
+.action-button, .btn-outline-light {
+    padding: 0.8rem 1.8rem; /* Use rem */
+    font-weight: 600;
+    border-radius: 50px; /* Fully rounded */
+    transition: all var(--transition-speed);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.5px; /* Add letter spacing */
+    font-size: 1rem;
 }
 
-/* Download Section Styles */
-#downloads {
-    background: #000;
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     color: white;
 }
 
-/* Other styles remain the same */
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22); /* Enhanced shadow */
+}
 
-/* Footer Style */
-footer {
-    background: #333;
-    color: #fff;
-    padding: 10px;
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+/* Section Styling */
+section {
+    padding: 80px 0; /* Adjusted padding */
+    position: relative;
+    border-bottom: 1px solid var(--border-color); /* Add subtle border between sections */
+}
+section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Alternating background colors */
+body.light-mode section:nth-of-type(even) {
+    background-color: var(--section-light);
+}
+body.dark-mode section:nth-of-type(even) {
+    background-color: var(--section-dark);
+}
+
+section h2 {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive heading size */
+    margin-bottom: 4rem; /* Increased margin */
+    position: relative;
+    display: inline-block;
     text-align: center;
+    width: 100%; /* Ensure it takes full width for centering */
+}
+
+section h2:after {
+    content: '';
+    position: absolute;
+    width: 60px; /* Wider underline */
+    height: 4px; /* Thicker underline */
+    background: var(--primary-color);
+    bottom: -20px; /* Position below text */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; /* Rounded underline */
+}
+
+/* Download Cards */
+.download-card {
+    background: var(--card-bg);
+    border-radius: 12px; /* Slightly larger radius */
+    padding: 2rem 1.5rem; /* Use rem */
+    text-align: center;
+    box-shadow: 0 8px 25px var(--shadow-color); /* Softer shadow */
+    transition: all var(--transition-speed);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--border-color); /* Add subtle border */
+}
+
+.download-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Add scale effect */
+    box-shadow: 0 12px 35px var(--shadow-color); /* Enhanced shadow on hover */
+}
+
+.download-icon {
+    font-size: 3.5rem; /* Larger icon */
+    margin-bottom: 1.5rem; /* Use rem */
+    color: var(--primary-color);
+}
+
+.download-card h3 {
+    margin-bottom: 1rem; /* Use rem */
+    font-weight: 600;
+    font-size: 1.3rem; /* Slightly larger heading */
+}
+
+.download-card p {
+    color: var(--muted-text-color); /* Muted text color */
+    font-size: 0.95rem;
+    flex-grow: 1; /* Allow paragraph to grow */
+    margin-bottom: 1.5rem; /* Ensure space before button */
+}
+
+.download-btn {
+    margin-top: auto; /* Push button to bottom */
+    border-radius: 50px; /* Fully rounded */
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* Keep existing primary button styles */
+}
+
+/* Feature Section */
+.feature-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Consistent radius */
+    box-shadow: 0 12px 30px var(--shadow-color);
+    margin-bottom: 2rem; /* Use rem */
+}
+
+.feature-image img {
+    transition: transform 0.5s ease; /* Smoother transition */
+    width: 100%;
+    display: block; /* Remove extra space below image */
+}
+
+.feature-image:hover img {
+    transform: scale(1.05);
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem; /* Use rem */
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem; /* Use rem */
+    transition: background-color var(--transition-speed);
+    padding: 1rem; /* Add padding for hover effect */
+    border-radius: 8px; /* Rounded corners for hover */
+}
+
+.feature-item:hover {
+    background-color: rgba(var(--primary-rgb, 78, 115, 223), 0.05); /* Subtle hover background */
+}
+.dark-mode .feature-item:hover {
+    background-color: rgba(var(--primary-rgb, 78, 115, 223), 0.1);
+}
+
+
+.feature-item i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: 5px;
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+    transition: transform var(--transition-speed); /* Add transition for hover */
+}
+
+.feature-item:hover i {
+    transform: scale(1.2); /* Scale icon on hover */
+}
+
+.feature-item h3 {
+    margin-bottom: 0.5rem; /* Use rem */
+    font-weight: 600;
+    font-size: 1.2rem; /* Use rem */
+}
+
+.feature-item p {
+    margin: 0;
+    color: var(--muted-text-color);
+    font-size: 0.95rem;
+}
+
+.feature-item p a { /* Style links within feature items */
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--primary-rgb, 78, 115, 223), 0.5);
+    transition: color var(--transition-speed), text-decoration-color var(--transition-speed);
+}
+.feature-item p a:hover {
+    color: var(--primary-color-hover);
+    text-decoration-color: var(--primary-color-hover);
+}
+
+
+/* Contribute Section */
+.contribute-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+    color: white;
+    padding: 4rem 2.5rem; /* Use rem */
+    border-radius: 12px; /* Consistent radius */
+    box-shadow: 0 12px 30px var(--shadow-color);
+    text-align: center;
+}
+
+.dark-mode .contribute-card {
+    background: linear-gradient(135deg, #2a4365 0%, var(--dark-bg) 100%);
+}
+
+.contribute-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem; /* Use rem */
+    display: block; /* Center icon */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contribute-card h3 {
+    font-size: 1.8rem; /* Use rem */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contribute-card p {
+    font-size: 1.1rem; /* Use rem */
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem auto; /* Center paragraph */
+}
+
+/* Credits Section */
+.credits-card {
+    background: var(--card-bg);
+    padding: 4rem 2.5rem; /* Use rem */
+    border-radius: 12px; /* Consistent radius */
+    box-shadow: 0 12px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.credits-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem; /* Use rem */
+    color: var(--primary-color);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.credits-card .lead {
+    font-size: 1.2rem; /* Use rem */
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+}
+
+.credits-card .btn-outline-primary { /* Style the credits button */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed);
+}
+.credits-card .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+.credits-logos {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem; /* Use rem */
+    font-size: 2.2rem; /* Use rem */
+    margin-top: 2.5rem; /* Use rem */
+}
+
+.credits-logos i {
+    color: var(--primary-color);
+    opacity: 0.6; /* More subtle */
+    transition: all var(--transition-speed);
+}
+
+.credits-logos i:hover {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg); /* Add slight rotation */
+}
+
+/* Footer */
+footer {
+    background: var(--dark-bg); /* Consistent dark background */
+    color: #a0aec0; /* Lighter text for dark bg */
+    padding: 2rem 0; /* Use rem */
+    font-size: 0.9rem; /* Slightly smaller font */
+}
+
+.dark-mode footer { /* Ensure dark mode footer looks right */
+     background: #171e28; /* Slightly different dark for footer */
 }
 
 footer p {
     margin: 0;
 }
 
-h2 {
-    font-size: 3rem;
-    font-weight: bolder;
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem; /* Use rem */
 }
 
-.title {
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 15px;
-    padding: 15px;
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08); /* Slightly more visible background */
+    color: #cbd5e0; /* Lighter icon color */
+    transition: all var(--transition-speed);
+    font-size: 1.1rem;
 }
 
-.col {
-    text-align: center;
+.social-links a:hover {
+    background: var(--primary-color);
+    color: white; /* Ensure icon is white on hover */
+    transform: translateY(-4px) scale(1.05); /* Enhanced hover effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.bg-light {
-    background-color: #eee !important;
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 25px; /* Adjusted position */
+    right: 25px; /* Adjusted position */
+    width: 45px; /* Slightly smaller */
+    height: 45px; /* Slightly smaller */
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem; /* Adjusted size */
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed);
+    z-index: 1000; /* Ensure it's above other elements */
+    box-shadow: 0 5px 15px var(--shadow-dark); /* Use dark shadow */
+    border: none; /* Remove default border */
 }
 
-.bg-dark {
-    background-color: #1f262d !important;
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-@media (min-width: 600px) {
-    .hero-section h1 {
-        font-size: 3.5rem; /* Large font size for larger screens */
-        /* background: black; */
-        border-radius: 35px;
-        padding: 20px;
-        font-weight: bold;
-        margin: auto; /* Center the title */
-        width: fit-content;
-        max-width: 100%; /* Ensure it doesn't exceed screen width */
-        box-sizing: border-box; /* Include padding in width calculation */
-        white-space: normal; /* Allow text to wrap */
-        margin-top: 20px;
-        /* box-shadow: inset 0 0 17px 0px #4c5257; */
-        background: black;
-        height: 100px;
+.back-to-top:hover {
+    background: var(--primary-color-hover);
+    transform: translateY(-4px) scale(1.05); /* Enhanced hover */
+}
+
+/* General Link Styling */
+a {
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color-hover);
+    text-decoration: none; /* Ensure no underline appears on hover unless intended */
+}
+
+/* Button Hover Effects (Subtle Shine) */
+.btn {
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Ensure button content is above pseudo-elements */
+}
+
+.btn::before { /* Use ::before for shine effect */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease; /* Slower shine */
+    z-index: -1; /* Place behind button content */
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+
+/* Section Anchor Offset */
+/* Removed the ::before pseudo-element for offset, handled in JS scroll */
+
+
+/* Responsiveness */
+@media (max-width: 991px) {
+    section {
+        padding: 60px 0; /* Adjust padding */
     }
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+    .feature-image {
+        margin-bottom: 2.5rem; /* Adjust margin */
+    }
+    .text-md-start { text-align: center !important; }
+    .text-md-end { text-align: center !important; }
+    .social-links {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-top: 60px; /* Adjust for potentially smaller navbar */
+        font-size: 0.95rem; /* Slightly smaller base font */
+    }
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    .hero-section {
+        padding: 80px 0 50px;
+    }
+    .hero-stats {
+        margin-top: 2rem;
+    }
+    .stat-item {
+        margin-bottom: 2rem;
+    }
+    section h2 {
+        margin-bottom: 3rem;
+    }
+    .download-card, .contribute-card, .credits-card {
+        padding: 1.5rem 1rem; /* Adjust padding */
+    }
+    .contribute-card, .credits-card {
+        padding: 3rem 1.5rem;
+    }
+    .credits-logos {
+        gap: 1.5rem;
+        font-size: 1.8rem;
+    }
+    footer {
+        padding: 1.5rem 0;
+    }
+}
+
+/* Remove conflicting/redundant styles previously at the end */
+/* Removed .bg-light, .bg-dark overrides */
+/* Removed extra h2 styling */
+/* Removed extra footer styling */
+/* Removed the specific @media (min-width: 600px) .hero-section h1 style */
+
+/* Add primary color RGB variables for use in rgba() */
+body {
+    --primary-rgb: 78, 115, 223; /* RGB for #4e73df */
 }
 
 
